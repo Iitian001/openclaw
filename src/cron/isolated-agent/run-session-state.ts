@@ -188,6 +188,7 @@ export function createCronRunContinuationSession(params: {
   thinkingLevel?: string;
   toolsAllow?: string[];
   toolsAllowIsDefault?: boolean;
+  ownerSessionKey?: string;
   cliSessionBindingFacts?: {
     extraSystemPromptStatic?: string;
     sourceReplyDeliveryMode?: "automatic" | "message_tool_only";
@@ -200,6 +201,9 @@ export function createCronRunContinuationSession(params: {
     phase: "running" as const,
     ...(params.toolsAllow !== undefined ? { toolsAllow: [...params.toolsAllow] } : {}),
     ...(params.toolsAllowIsDefault === true ? { toolsAllowIsDefault: true } : {}),
+    ...(params.toolsAllow !== undefined && params.ownerSessionKey?.trim()
+      ? { ownerSessionKey: params.ownerSessionKey.trim() }
+      : {}),
     ...(params.cliSessionBindingFacts
       ? { cliSessionBindingFacts: { ...params.cliSessionBindingFacts } }
       : {}),

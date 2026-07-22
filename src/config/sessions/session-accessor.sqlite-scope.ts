@@ -124,9 +124,6 @@ export function resolveSqliteScope(
     scopedAgentId: effectiveAgentId,
     sessionKey: scope.sessionKey,
     storeAgentId: storeTarget?.agentId,
-    useDefaultAgentForUnownedStore: Boolean(
-      storeTarget?.path && !storeTarget.agentId && !scopedAgentId,
-    ),
   });
   if (!agentId) {
     throw new Error("Cannot resolve SQLite session scope without an agent id");
@@ -158,9 +155,6 @@ export function resolveSqliteReadScope(
     scopedAgentId: effectiveAgentId,
     sessionKey,
     storeAgentId: storeTarget?.agentId,
-    useDefaultAgentForUnownedStore: Boolean(
-      storeTarget?.path && !storeTarget.agentId && !scopedAgentId,
-    ),
   });
   if (!agentId) {
     throw new Error("Cannot resolve SQLite transcript read scope without an agent id");
@@ -197,7 +191,6 @@ function resolveSqliteAgentId(params: {
   scopedAgentId?: string;
   sessionKey?: string;
   storeAgentId?: string;
-  useDefaultAgentForUnownedStore?: boolean;
 }): string | undefined {
   const scopedAgentId = params.scopedAgentId ? normalizeAgentId(params.scopedAgentId) : undefined;
   if (scopedAgentId && params.storeAgentId && scopedAgentId !== params.storeAgentId) {
@@ -208,11 +201,7 @@ function resolveSqliteAgentId(params: {
   const parsedAgentId = params.sessionKey
     ? parseAgentSessionKey(params.sessionKey)?.agentId
     : undefined;
-  const resolved = scopedAgentId ?? params.storeAgentId ?? parsedAgentId;
-  if (!resolved && params.useDefaultAgentForUnownedStore) {
-    throw new Error("Unowned SQLite session store requires an explicit configured agent id.");
-  }
-  return resolved;
+  return scopedAgentId ?? params.storeAgentId ?? parsedAgentId;
 }
 
 export function resolveSqliteTranscriptArchiveDirectory(

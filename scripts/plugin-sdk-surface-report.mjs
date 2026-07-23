@@ -159,7 +159,8 @@ export function readPluginSdkSurfaceBudgets(env = process.env) {
       // +3: plugin approval reviewer-detail cap/truncator and sanitize-with-status variant.
       // +1: canonical incognito session classifier for storage-safe plugin behavior.
       // +2: shipped Slack and Discord setup compatibility helpers.
-      4697,
+      // +1: typed owner-required error for session store path resolution.
+      4698,
       env,
     ),
     publicFunctionExports: readPluginSdkSurfaceBudgetEnv(

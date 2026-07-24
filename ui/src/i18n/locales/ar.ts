@@ -585,6 +585,9 @@ export const ar: TranslationMap = {
     worktreeName: "اسم شجرة العمل",
     worktreeNamePlaceholder: "تلقائي",
     worktreeNameInvalid: "تستخدم أسماء شجرة العمل أحرفًا صغيرة وأرقامًا وشرطات.",
+    incognito: "التصفح المتخفي",
+    incognitoDescription: "احتفظ بهذه المحادثة حتى إعادة تشغيل Gateway فقط",
+    startAsDraft: "البدء كمسودة",
     messagePlaceholder: "على ماذا يجب أن تعمل هذه الجلسة؟",
     readingAttachment: "جارٍ قراءة المرفق",
     start: "بدء الجلسة",
@@ -606,7 +609,8 @@ export const ar: TranslationMap = {
     limit: "الحد",
     filters: "عوامل التصفية",
     createdBy: "أنشأها {name}",
-    filterByCreator: "تصفية حسب المُنشئ",
+    archivedBy: "أرشفها {name}",
+    people: "الأشخاص",
     allCreators: "كل الأشخاص",
     filterControls: "عوامل تصفية الجلسات",
     sourceFilters: "عوامل تصفية مصدر الجلسة",
@@ -665,6 +669,8 @@ export const ar: TranslationMap = {
     openWorkboardCard: "فتح بطاقة Workboard",
     dashboardAvailable: "لوحة المعلومات متاحة",
     approvalNeeded: "الموافقة مطلوبة",
+    queuedMessage: "{count} رسالة في قائمة الإرسال",
+    queuedMessages: "{count} رسائل في قائمة الإرسال",
     noSessions: "لم يتم العثور على جلسات.",
     noActiveSessions: "لا توجد محادثات نشطة.",
     noArchivedSessions: "لا توجد جلسات مؤرشفة.",
@@ -732,6 +738,7 @@ export const ar: TranslationMap = {
     unread: "Unread",
     worktreeSession: "Worktree session",
     automationAttached: "Automation attached",
+    incognito: "محادثة متخفية",
     cloudWorkerPlacement: "عامل السحابة: {state}",
     cloudWorkerPlacementConflict: "عامل السحابة: {state} · تعارض واحد في مساحة العمل",
     cloudWorkerPlacementConflicts: "عامل السحابة: {state} · {count} تعارضات في مساحة العمل",
@@ -1386,6 +1393,10 @@ export const ar: TranslationMap = {
     chatPrefs: {
       title: "الدردشة",
       hint: "تفضيلات الدردشة المحلية للمتصفح.",
+      messageWidth: "عرض الرسالة",
+      messageWidthHint: "عرض CSS اختياري للنص المتمركز، مثل 960px أو 82% أو min(1280px, 82%).",
+      messageWidthInvalid:
+        "أدخل عرض CSS مثل 960px أو 82% أو min(1280px, 82%) أو calc(100% - 2rem).",
     },
     sidebarPrefs: {
       title: "الشريط الجانبي",
@@ -1671,6 +1682,7 @@ export const ar: TranslationMap = {
     blockedAgentFilter: "محظور بواسطة عامل تصفية الوكيل",
   },
   nav: {
+    account: "الحساب",
     back: "رجوع",
     forward: "تقدّم",
     chat: "الدردشة",
@@ -2381,6 +2393,8 @@ export const ar: TranslationMap = {
     toolRuns: "{count} عمليات تشغيل",
     identity: {
       title: "الهوية",
+      menuLabel: "قائمة الهوية",
+      menuButtonLabel: "قائمة الهوية والتطبيق لـ {name}",
       description: "ملفك الشخصي على هذا الـ gateway.",
       loading: "جارٍ تحميل هويتك…",
       profileUnavailable: "تعذّر تحميل ملف هويتك.",
@@ -2998,6 +3012,7 @@ export const ar: TranslationMap = {
     eventStale: "جلسة قديمة",
   },
   connection: {
+    queuedCount: "{count} في قائمة الانتظار",
     reconnecting: "جارٍ إعادة الاتصال…",
     retryNow: "إعادة المحاولة الآن",
     access: {
@@ -3663,6 +3678,15 @@ export const ar: TranslationMap = {
   },
   login: {
     subtitle: "لوحة معلومات Gateway",
+    deviceAuthMigration: {
+      banner: "لا يزال هذا المتصفح يحتاج إلى موافقة الجهاز لمرة واحدة بعد التحديث.",
+      action: "تأمين هذا المتصفح",
+      secureContextRequired:
+        "يبقى هذا المتصفح القديم متاحًا مؤقتًا. أعد فتحه عبر HTTPS أو localhost لتأمينه بهوية الجهاز.",
+      pendingUnavailable: "طلب إقران المتصفح غير متاح بعد. أعد المحاولة بعد لحظة.",
+      loadFailed: "تعذّر تحميل طلب إقران هذا المتصفح: {error}",
+      approvalFailed: "تعذّر تأمين هذا المتصفح: {error}",
+    },
     passwordPlaceholder: "اختياري",
     showToken: "إظهار الرمز",
     hideToken: "إخفاء الرمز",
@@ -3756,6 +3780,9 @@ export const ar: TranslationMap = {
   },
   chat: {
     disconnected: "تم قطع الاتصال بـ Gateway.",
+    sendErrors: {
+      activeLeafChanged: "بدّل المسار فروعه — راجِع وأعد الإرسال.",
+    },
     waitingForApproval: "في انتظار الموافقة…",
     startupStatus: {
       preparingWorkspace: "جارٍ تحضير مساحة العمل…",
@@ -3765,6 +3792,20 @@ export const ar: TranslationMap = {
     },
     outputTokens: "{count} رمز إخراج",
     archivedSessionDisabled: "استعِد هذه الجلسة لإرسال الرسائل.",
+    sessionSharing: {
+      menu: "مشاركة المسار",
+      current: "ظهور المسار: {visibility}",
+      visibility: "الظهور",
+      shared: "مُشارَك",
+      readOnly: "للقراءة فقط",
+      suggest: "اقتراح",
+      draft: "مسودة",
+      publishDraft: "نشر المسودة",
+      members: "الأعضاء",
+      selected: "عضو",
+      noPeople: "لم يُعثر على أشخاص مقترنين.",
+      readOnlyNotice: "يمكن فقط لمالك المسار والأعضاء التصرف في هذا المسار.",
+    },
     loadOlder: "تحميل الأقدم",
     sessionHeader: {
       renameTooltip: "إعادة تسمية الجلسة",
@@ -3778,6 +3819,7 @@ export const ar: TranslationMap = {
       copyPath: "نسخ المسار",
       copyBranch: "نسخ اسم الفرع",
       copied: "تم النسخ",
+      incognito: "مسار متخفٍّ",
       branches: "فروع المحادثة",
       branchSwitchUnavailable: "تبديل الفرع غير متاح أثناء عمل الوكيل.",
       branchSwitchRequiresAdmin: "يتطلب تبديل الفروع صلاحية مسؤول المشغّل.",
@@ -4067,6 +4109,7 @@ export const ar: TranslationMap = {
       openInCanvas: "فتح في اللوحة",
       reply: "رد",
       replyToMessage: "الرد على الرسالة",
+      replyingTo: "الرد على {name}",
       rewind: "إرجاع",
       rewindConfirm: "الإرجاع إلى ما قبل هذه الرسالة؟",
       rewindToHere: "الإرجاع إلى هنا",
@@ -4164,6 +4207,7 @@ export const ar: TranslationMap = {
       placeholderWithAttachments: "Add a message or paste more images...",
       placeholderDisconnected: "Connect to the gateway to start chatting...",
       offlineHint: "غير متصل — سيتم وضع الرسائل في قائمة الانتظار وإرسالها عند عودة الاتصال.",
+      offlineQueuedHint: "غير متصل — {count} في قائمة الانتظار؛ تُرسَل الرسائل عند عودة الاتصال.",
       preparingModel: "جارٍ إعداد النموذج...",
       responding: "{name} يرد...",
       sendingMessage: "جارٍ إرسال الرسالة...",
